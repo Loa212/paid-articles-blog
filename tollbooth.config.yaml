@@ -1,0 +1,29 @@
+gateway:
+  port: 3000
+
+wallets:
+  base-sepolia: "${WALLET_ADDRESS}"
+
+accepts:
+  - network: base-sepolia
+    asset: USDC
+
+upstreams:
+  blog:
+    url: "http://localhost:4000"
+
+routes:
+  # Homepage — free
+  "GET /":
+    upstream: blog
+    free: true
+
+  # Article previews — free
+  "GET /articles/*/preview":
+    upstream: blog
+    free: true
+
+  # Full articles — $0.01 each
+  "GET /articles/*":
+    upstream: blog
+    price: "$0.01"
