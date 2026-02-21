@@ -1,6 +1,7 @@
 ---
 title: "Building a Paid API in Five Minutes"
 date: "2026-01-05"
+price: "$0.05"
 excerpt: "You built an API. People want to use it. You want to get paid. Here's how to go from free API to paid API in under five minutes using Tollbooth."
 ---
 

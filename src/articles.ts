@@ -6,6 +6,7 @@ export interface Article {
 	slug: string;
 	title: string;
 	date: string;
+	price: string;
 	excerpt: string;
 	content: string;
 }
@@ -35,6 +36,7 @@ function loadArticles(): Map<string, Article> {
 			slug,
 			title: data.title as string,
 			date: data.date as string,
+			price: (data.price as string) ?? "$0.01",
 			excerpt: data.excerpt as string,
 			content: content.trim(),
 		});
@@ -49,11 +51,18 @@ export function listArticles(): Array<{
 	slug: string;
 	title: string;
 	date: string;
+	price: string;
 	excerpt: string;
 }> {
 	return [...articles.values()]
 		.sort((a, b) => b.date.localeCompare(a.date))
-		.map(({ slug, title, date, excerpt }) => ({ slug, title, date, excerpt }));
+		.map(({ slug, title, date, price, excerpt }) => ({
+			slug,
+			title,
+			date,
+			price,
+			excerpt,
+		}));
 }
 
 export function getArticlePreview(slug: string): ArticlePreview | null {
@@ -73,6 +82,19 @@ export function getArticlePreview(slug: string): ArticlePreview | null {
 		excerpt: article.excerpt,
 		preview,
 		wordCount: words.length,
+	};
+}
+
+export function getArticleMeta(
+	slug: string,
+): { slug: string; title: string; date: string; price: string } | null {
+	const article = articles.get(slug);
+	if (!article) return null;
+	return {
+		slug: article.slug,
+		title: article.title,
+		date: article.date,
+		price: article.price,
 	};
 }
 

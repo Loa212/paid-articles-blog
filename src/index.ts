@@ -1,5 +1,10 @@
 import { Hono } from "hono";
-import { getArticle, getArticlePreview, listArticles } from "./articles.ts";
+import {
+	getArticle,
+	getArticleMeta,
+	getArticlePreview,
+	listArticles,
+} from "./articles.ts";
 
 const app = new Hono();
 
@@ -7,6 +12,18 @@ const app = new Hono();
 app.get("/", (c) => {
 	const articles = listArticles();
 	return c.json({ articles });
+});
+
+// Meta: article metadata including author-set price (used by Tollbooth pricing function)
+app.get("/articles/:slug/meta", (c) => {
+	const { slug } = c.req.param();
+	const meta = getArticleMeta(slug);
+
+	if (!meta) {
+		return c.json({ error: "Article not found" }, 404);
+	}
+
+	return c.json(meta);
 });
 
 // Preview: first ~200 words + metadata (free)

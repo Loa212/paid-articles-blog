@@ -1,6 +1,7 @@
 ---
 title: "Why Micropayments Will Save Journalism"
 date: "2025-12-01"
+price: "$0.01"
 excerpt: "The subscription model is broken. Readers don't want ten $15/month subscriptions — they want to pay for what they read. Micropayments finally make that possible."
 ---
 

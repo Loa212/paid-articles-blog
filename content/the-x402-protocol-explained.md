@@ -1,6 +1,7 @@
 ---
 title: "The x402 Protocol Explained"
 date: "2025-12-15"
+price: "$0.02"
 excerpt: "HTTP status 402 has been 'reserved for future use' since 1997. Nearly three decades later, the x402 protocol finally gives it a purpose: native payments on the web."
 ---
 
