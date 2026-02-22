@@ -67,7 +67,7 @@ The blog server runs on `http://localhost:4000`.
 In a second terminal:
 
 ```bash
-WALLET_ADDRESS=0xYourWalletAddress npx tollbooth@0.4.3
+WALLET_ADDRESS=0xYourWalletAddress bunx tollbooth
 ```
 
 Tollbooth runs on `http://localhost:3000` and proxies to the blog server.

@@ -13,15 +13,12 @@ upstreams:
     url: "http://localhost:4000"
 
 routes:
-  # No price = passthrough (v0.4.3+)
   "GET /":
     upstream: blog
   "GET /articles/*/meta":
     upstream: blog
   "GET /articles/*/preview":
     upstream: blog
-
-  # Full articles — dynamic per-article pricing
   "GET /articles/*":
     upstream: blog
     price:
