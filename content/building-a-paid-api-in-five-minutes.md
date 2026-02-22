@@ -37,7 +37,6 @@ upstreams:
 routes:
   "GET /health":
     upstream: api
-    free: true
   "POST /generate":
     upstream: api
     price: "$0.05"

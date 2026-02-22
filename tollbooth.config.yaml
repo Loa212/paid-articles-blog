@@ -13,24 +13,15 @@ upstreams:
     url: "http://localhost:4000"
 
 routes:
-  # Homepage — free
+  # No price = passthrough (v0.4.3+)
   "GET /":
     upstream: blog
-    free: true
-
-  # Article metadata — free (used by the pricing function)
   "GET /articles/*/meta":
     upstream: blog
-    free: true
-
-  # Article previews — free
   "GET /articles/*/preview":
     upstream: blog
-    free: true
 
   # Full articles — dynamic per-article pricing
-  # Each author sets their price in the article's frontmatter.
-  # Tollbooth calls the pricing function at request time.
   "GET /articles/*":
     upstream: blog
     price:
